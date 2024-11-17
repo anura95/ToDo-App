@@ -20,7 +20,7 @@ const Todos = () => {
   const fetchTodos = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/todos', {
+      const response = await fetch('https://todo-app-backend-l829.onrender.com/todos', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -35,7 +35,7 @@ const Todos = () => {
   const handleDelete = async (todoId) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/todos/${todoId}`, {
+      await fetch(`https://todo-app-backend-l829.onrender.com/todos/${todoId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ const Todos = () => {
     const { title, description, status } = currentTodo;
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/todos/${currentTodo._id}`, {
+      await fetch(`https://todo-app-backend-l829.onrender.com/todos/${currentTodo._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const Todos = () => {
   const toggleTodoStatus = async (todo) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/todos/${todo._id}`, {
+      await fetch(`https://todo-app-backend-l829.onrender.com/todos/${todo._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
