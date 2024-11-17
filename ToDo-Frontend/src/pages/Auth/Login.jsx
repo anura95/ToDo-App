@@ -36,7 +36,7 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem('token', data.access_token);
 
-        navigate('/');
+        navigate('/add-todos');
       } else {
         setErrorMessage(data.msg || 'An error occurred');
       }
