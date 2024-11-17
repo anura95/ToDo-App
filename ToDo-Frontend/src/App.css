@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Host Grotesk", sans-serif;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.site-layout {
+  background: #f0f2f5;
+}
