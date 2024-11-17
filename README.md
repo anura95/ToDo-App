@@ -8,7 +8,6 @@ A project management tool to create, manage projects, and track todos. Includes 
 ## Features
 - **Project Management**: Create, view, and edit projects.
 - **Todo Management**: Add, update, delete, and mark todos as pending or complete.
-- **Export**: Export project summary as a Markdown file.
 - **Authentication**: Basic user login.
 
 ---
