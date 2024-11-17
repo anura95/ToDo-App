@@ -21,7 +21,7 @@ const CreateTodo = () => {
     const accessToken = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://localhost:5000/add-todos', {
+      const response = await fetch('https://todo-app-backend-l829.onrender.com/add-todos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
