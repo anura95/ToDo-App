@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Auth/Login";
@@ -9,7 +9,14 @@ import Todos from "./pages/Todo/Todos";
 
 const App = () => {
   
-  const isLoggedIn = !!localStorage.getItem('token'); 
+const [isLoggedIn,setIsLoggedIn] = useState(null);
+  const token = localStorage.getItem('token');
+
+  useEffect(()=>{
+    if(token){
+      setIsLoggedIn(true);
+    }
+  },[token])
 
   return (
     <BrowserRouter>
