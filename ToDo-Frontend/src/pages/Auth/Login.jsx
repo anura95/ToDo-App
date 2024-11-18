@@ -42,12 +42,12 @@ const Login = () => {
           }
         });
       } else {
-        throw new Error(data.msg 'Invalid credentials');
+        throw new Error(data.msg || 'Invalid credentials');
       }
     } catch (error) {
       notification.error({
         message: 'Login Failed',
-        description: error.message 'Please try again',
+        description: error.message || 'Please try again',
         duration: 3
       });
       setErrorMessage(error.message || 'Login failed. Please try again.');
