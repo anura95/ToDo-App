@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Auth.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { notification } from 'antd';
 
 const Login = () => {
@@ -8,7 +8,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,18 +29,28 @@ const Login = () => {
       });
 
       const data = await response.json();
-      notification.success({
-        message: data.msg,
-      });
-      if (response.ok) {
-        localStorage.setItem('token', data.access_token);
 
-        navigate('/add-todos');
+      if (response.ok && data.access_token) {
+        // Show success notification
+        notification.success({
+          message: 'Login Successful',
+          description: 'Welcome back!',
+          duration: 1,
+          onClose: () => {
+            localStorage.setItem('token', data.access_token);
+            window.location.href = '/add-todos';
+          }
+        });
       } else {
-        setErrorMessage(data.msg || 'An error occurred');
+        throw new Error(data.msg 'Invalid credentials');
       }
     } catch (error) {
-      setErrorMessage('Network error. Please try again.');
+      notification.error({
+        message: 'Login Failed',
+        description: error.message 'Please try again',
+        duration: 3
+      });
+      setErrorMessage(error.message || 'Login failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
