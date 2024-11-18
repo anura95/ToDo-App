@@ -16,11 +16,15 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); 
     notification.success({
-      message: 'Logout Successful.',
+      message: 'Logout Successful',
+      description: 'You have been logged out successfully.',
+      duration: 1,
+      onClose: () => {
+        localStorage.clear();
+        window.location.href = '/login';
+      }
     });
-    navigate('/login'); 
   };
 
   return (
